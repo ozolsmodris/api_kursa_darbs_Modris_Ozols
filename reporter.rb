@@ -60,6 +60,7 @@ json_file = JSON.parse(File.new(options.json).read)
 passed = json_file.select{|scenario| scenario["elements"].first["steps"].last["result"]["status"] == "passed"}.count
 failed = json_file.select{|scenario| ["failed", "skipped"].include? scenario["elements"].first["steps"].last["result"]["status"]}.count
 ratio = (passed * 100.0 / (passed + failed)).round(2)
+ratio = ratio.to_i if ratio.to_i == ratio
 color = 65280
 color = 16711680 if failed.positive?
 
