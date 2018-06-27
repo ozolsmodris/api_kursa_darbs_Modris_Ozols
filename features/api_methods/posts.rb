@@ -31,5 +31,5 @@ def edit_post_title_negative(user:, post:)
   assert_status_code(403, response, 'Post updated')
   resp = JSON.parse(response)
   assert_equal('Forbidden', resp['error'], "Post title doesn't match")
-  assert_equal('You cannot delete a post that has not been created by you!', resp['message'], "Post title doesn't match")
+  assert_equal('You cannot edit a post that has not been created by you!', resp['message'], "Post error message did not match")
 end
